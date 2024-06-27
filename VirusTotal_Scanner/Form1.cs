@@ -204,9 +204,10 @@ namespace VirusTotal_Scanner
                 }
 
                 richTextBox2.Text += "\n___________________\nHTTP Response Headers: \n";
+                richTextBox2.Text += "--------------------------------------\n";
                 richTextBox2.Text += "Content Type: " + report.HttpResponseHeaders.ContentType + "\n";
                 richTextBox2.Text += "Content Security Policy Report Only: " + report.HttpResponseHeaders.ContentSecurityPolicyReportOnly + "\n";
-                richTextBox2.Text += "Accept CH: " + report.HttpResponseHeaders.AcceptCH + "\n";
+                richTextBox2.Text += "Accept CH: \n....................\n" + report.HttpResponseHeaders.AcceptCH + "\n....................\n";
                 richTextBox2.Text += "Permissions Policy: " + report.HttpResponseHeaders.PermissionsPolicy + "\n";
                 richTextBox2.Text += "P3P: " + report.HttpResponseHeaders.P3P + "\n";
                 richTextBox2.Text += "Content Encoding: " + report.HttpResponseHeaders.ContentEncoding + "\n";
@@ -219,7 +220,7 @@ namespace VirusTotal_Scanner
                 richTextBox2.Text += "Set Cookie: " + report.HttpResponseHeaders.SetCookie + "\n";
                 richTextBox2.Text += "Alt Svc: " + report.HttpResponseHeaders.AltSvc + "\n";
                 richTextBox2.
-                    Text += "\n___________________\n";
+                    Text += "--------------------------------------\n___________________\n";
 
                 richTextBox2.Text += "\nEngine Results: \n";
 
