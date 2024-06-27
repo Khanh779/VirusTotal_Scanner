@@ -126,7 +126,7 @@ namespace VirusTotal_Library.VirusTotal
             result.MeaningfulName = (string)data["meaningful_name"];
 
             result.FirstSubmissionDate = ConvertTimeStampsToDateTime((long)data["first_submission_date"]);
-            result.LastAnalysisDate = ConvertTimeStampsToDateTime((long)data["last_analysis_date"]);
+            result.LastAnalysisDate = data["last_analysis_date"]!=null ? ConvertTimeStampsToDateTime((long)data["last_analysis_date"]) : DateTime.Now;
             result.LastSubmissionDate = ConvertTimeStampsToDateTime((long)data["last_submission_date"]);
 
             result.TimesSubmitted = (string)data["times_submitted"];
@@ -143,11 +143,15 @@ namespace VirusTotal_Library.VirusTotal
 
 
             var signatureInfo = new SignatureInfo();
-            signatureInfo.Description = (string)data["signature_info"]["description"];
-            signatureInfo.FileVersion = (string)data["signature_info"]["file version"];
-            signatureInfo.OriginalName = (string)data["signature_info"]["original name"];
-            signatureInfo.Product = (string)data["signature_info"]["product"];
-            signatureInfo.InternalName = (string)data["signature_info"]["internal name"];
+            var get_signature_info = data["signature_info"];
+            if( get_signature_info !=null)
+            {
+                signatureInfo.Description = (string)get_signature_info["description"];
+                signatureInfo.FileVersion = (string)get_signature_info["file version"];
+                signatureInfo.OriginalName = (string)get_signature_info["original name"];
+                signatureInfo.Product = (string)get_signature_info["product"];
+                signatureInfo.InternalName = (string)get_signature_info["internal name"];
+            }
             result.SignatureInfo = signatureInfo;
 
             var AnalysisStatis = new AnalysisStatis();

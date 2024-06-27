@@ -1,7 +1,10 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
+using System.CodeDom;
 using System.IO;
 using System.Net.Http;
 using System.Security.Cryptography;
+using System.Windows.Forms;
 
 namespace VirusTotal_Library.VirusTotal
 {
@@ -37,9 +40,35 @@ namespace VirusTotal_Library.VirusTotal
 
         public DateTime ConvertDateStringToDateTime(string dateTimeString)
         {
-            //DateTimeOffset dateTime = DateTimeOffset.ParseExact(dateTimeString, "ddd, dd MMM yyyy HH:mm:ss 'GMT'", System.Globalization.CultureInfo.InvariantCulture);
-            DateTime dateTime1= DateTime.Parse(dateTimeString);
-            return dateTime1;
+            //MessageBox.Show(dateTimeString);
+            DateTimeOffset dateTime = DateTimeOffset.ParseExact(dateTimeString, "ddd, dd MMM yyyy HH:mm:ss 'GMT'", System.Globalization.CultureInfo.InvariantCulture);
+            //DateTime dateTime1= DateTime.Parse(dateTimeString);
+            return dateTime.DateTime;
+        }
+
+        public JToken GetJsonValueIgnoreCase(JToken jToken, string key)
+        {
+            if (jToken == null)
+                return null;
+
+            JToken jto = jToken; 
+
+            string[] jtoStr = { key, key.ToLower(), key.ToUpper(), char.ToLower(key[0]) + key.Substring(1) };
+          
+            
+            for(int i=0; i < jtoStr.Length; i++)
+            {
+                foreach (var property in ((JObject)jToken).Properties())
+                {
+                    if (property.Name == jtoStr[i])
+                    {
+                        jto = property.Value;
+                        break;
+                    }
+                }
+
+            }    
+            return jto;
         }
 
 

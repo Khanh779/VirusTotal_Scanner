@@ -147,7 +147,7 @@ namespace VirusTotal_Scanner
                 int scanType = 0;
 
                 var report = await urlAnalysis.ScanUrl(textBox2.Text, scanType);
-                richTextBox2.Text = "Scan Type: " + (scanType == 0 ? "Url" : "Analysis")+ " (0 - Recommended)";
+                richTextBox2.Text = "Scan Type: " + (scanType == 0 ? "0 - Url" : "1 - Analysis")+ " (0  <Url> - Recommended)";
                 richTextBox2.Text += "\n_________________________\n";
 
                 richTextBox2.Text += "URL: " + report.Url + "\n";

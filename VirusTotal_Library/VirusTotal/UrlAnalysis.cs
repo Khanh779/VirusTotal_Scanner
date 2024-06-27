@@ -33,13 +33,14 @@ namespace VirusTotal_Library.VirusTotal
             JObject scanData = JObject.Parse(scanDataString);
 
             var getDataAttributes = scanData["data"]["attributes"];
+
             var getLast_Http_Response_Headers = getDataAttributes["last_http_response_headers"];
 
             var getReputation = getDataAttributes["reputation"];
             result.Reputation = getDataAttributes["reputation"] != null ? (int)getReputation : 0;
 
             result.Url = (scanType == 0 ? (string)getDataAttributes["url"] : url);
-            //result.Permalink = (string)scanData["data"]["attributes"]["link"];
+            result.Permalink = (string)scanData["data"]?["attributes"]?["link"];
             result.Resource = scanId;
             result.ScanId = scanId;
             result.ResponseCode = 1;
@@ -59,9 +60,12 @@ namespace VirusTotal_Library.VirusTotal
             var lastModDate = scanData["data"]["attributes"]["last_modification_date"];
             result.LastModificationDate = ConvertTimeStampsToDateTime(lastModDate != null ? (long)lastModDate : 0);
 
-            result.Date = getLast_Http_Response_Headers["date"] != null ?
-                    ConvertDateStringToDateTime((string)getLast_Http_Response_Headers?["date"]) :
-                    ConvertTimeStampsToDateTime((long)getDataAttributes["date"]);
+
+            var getDate = GetJsonValueIgnoreCase(getLast_Http_Response_Headers, "date");
+
+            result.Date = (getDate != null ?
+                    ConvertDateStringToDateTime( (string)getDate) :
+                    ConvertTimeStampsToDateTime((long)getDataAttributes["date"]));
 
 
             var HttpResponseHeaders = new HttpResponseHeaders();
@@ -73,7 +77,7 @@ namespace VirusTotal_Library.VirusTotal
                 HttpResponseHeaders.PermissionsPolicy = (string)getLast_Http_Response_Headers["permissions-policy"];
                 HttpResponseHeaders.P3P = (string)getLast_Http_Response_Headers["p3p"];
                 HttpResponseHeaders.ContentEncoding = (string)getLast_Http_Response_Headers["content-encoding"];
-                HttpResponseHeaders.Date = ConvertDateStringToDateTime((string)getLast_Http_Response_Headers["date"]);
+                HttpResponseHeaders.Date = result.Date;
                 HttpResponseHeaders.Server = (string)getLast_Http_Response_Headers["server"];
                 HttpResponseHeaders.ContentLength = (int)getLast_Http_Response_Headers["content-length"];
                 HttpResponseHeaders.XXSSProtection = (string)getLast_Http_Response_Headers["x-xss-protection"];
