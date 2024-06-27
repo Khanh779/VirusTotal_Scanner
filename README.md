@@ -3,6 +3,8 @@
 ## Overview
 This project is built on .NET Framework 4.7.2 and provides functionality to scan files, URLs and IP Address for security purposes.
 
+![image](https://github.com/Khanh779/VirusTotal_Scanner/blob/master/Screenshot/Record.gif)
+
 ## Features
 - **File Scanning**: Analyze files to detect potential security threats.
 - **URL Scanning**: Scan URLs to identify malicious or suspicious content.
