@@ -8,6 +8,8 @@ This project is built on .NET Framework 4.7.2 and provides functionality to scan
 - **URL Scanning**: Scan URLs to identify malicious or suspicious content.
 - **IP Address Scanning**: Check IP addresses to detect potential security threats.
 
+### Setting Up API Key
+- Enter your API Key into the VirusTotal_Cfg.ini file
 
 ## Installation
 1. Require .Net Framework 4.7.2 or higher.
