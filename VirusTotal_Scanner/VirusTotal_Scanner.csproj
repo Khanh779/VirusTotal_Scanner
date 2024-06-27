@@ -79,6 +79,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="VirusTotal_Cfg.ini" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

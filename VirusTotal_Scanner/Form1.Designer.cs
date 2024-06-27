@@ -40,12 +40,12 @@
             this.richTextBox2 = new System.Windows.Forms.RichTextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.button4 = new System.Windows.Forms.Button();
             this.richTextBox3 = new System.Windows.Forms.RichTextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -89,7 +89,7 @@
             this.button2.TabIndex = 4;
             this.button2.Text = "Scan";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button2.MouseClick += new System.Windows.Forms.MouseEventHandler(this.button2_MouseClick);
             // 
             // richTextBox1
             // 
@@ -99,7 +99,7 @@
             this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.richTextBox1.Location = new System.Drawing.Point(6, 67);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(547, 222);
+            this.richTextBox1.Size = new System.Drawing.Size(547, 218);
             this.richTextBox1.TabIndex = 3;
             this.richTextBox1.Text = "";
             this.richTextBox1.WordWrap = false;
@@ -112,7 +112,7 @@
             this.button1.TabIndex = 2;
             this.button1.Text = "Browse";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.button1_MouseClick);
             // 
             // textBox1
             // 
@@ -153,7 +153,7 @@
             this.button3.TabIndex = 9;
             this.button3.Text = "Scan";
             this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.button3.MouseClick += new System.Windows.Forms.MouseEventHandler(this.button3_MouseClick);
             // 
             // richTextBox2
             // 
@@ -164,7 +164,7 @@
             this.richTextBox2.DetectUrls = false;
             this.richTextBox2.Location = new System.Drawing.Point(9, 66);
             this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.Size = new System.Drawing.Size(544, 227);
+            this.richTextBox2.Size = new System.Drawing.Size(544, 223);
             this.richTextBox2.TabIndex = 8;
             this.richTextBox2.Text = "";
             this.richTextBox2.WordWrap = false;
@@ -185,10 +185,6 @@
             this.label2.Size = new System.Drawing.Size(28, 17);
             this.label2.TabIndex = 5;
             this.label2.Text = "Url:";
-            // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.Filter = "All File |*.*";
             // 
             // tabPage3
             // 
@@ -212,7 +208,7 @@
             this.button4.TabIndex = 13;
             this.button4.Text = "Scan";
             this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.button4.MouseClick += new System.Windows.Forms.MouseEventHandler(this.button4_MouseClick);
             // 
             // richTextBox3
             // 
@@ -223,7 +219,7 @@
             this.richTextBox3.DetectUrls = false;
             this.richTextBox3.Location = new System.Drawing.Point(9, 66);
             this.richTextBox3.Name = "richTextBox3";
-            this.richTextBox3.Size = new System.Drawing.Size(544, 227);
+            this.richTextBox3.Size = new System.Drawing.Size(544, 223);
             this.richTextBox3.TabIndex = 12;
             this.richTextBox3.Text = "";
             this.richTextBox3.WordWrap = false;
@@ -244,6 +240,10 @@
             this.label3.Size = new System.Drawing.Size(73, 17);
             this.label3.TabIndex = 10;
             this.label3.Text = "IP Address:";
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.Filter = "All File |*.*";
             // 
             // Form1
             // 
