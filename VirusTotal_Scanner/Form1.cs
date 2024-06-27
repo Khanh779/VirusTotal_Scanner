@@ -31,7 +31,7 @@ namespace VirusTotal_Scanner
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
-         
+
 
             if (File.Exists(filePath))
             {
@@ -47,7 +47,7 @@ namespace VirusTotal_Scanner
                         }
 
                     }
-                  
+
                 }
             }
 
@@ -87,7 +87,7 @@ namespace VirusTotal_Scanner
                 VirusTotal_Library.VirusTotal.FileAnalysis fileAnalysis = new VirusTotal_Library.VirusTotal.FileAnalysis(ApiKey);
 
 
-                var checkScanRe = await fileAnalysis.ScanFileViaHash(textBox1.Text);
+                var checkScanRe = await fileAnalysis.ScanFileViaAnalyses(textBox1.Text);
 
                 richTextBox1.Text = "";
                 richTextBox1.Text += "Reputation: " + checkScanRe.Reputation + "\n";
@@ -144,16 +144,27 @@ namespace VirusTotal_Scanner
             {
                 VirusTotal_Library.VirusTotal.UrlAnalysis urlAnalysis = new VirusTotal_Library.VirusTotal.UrlAnalysis(ApiKey);
 
+                int scanType = 0;
 
-                var report = await urlAnalysis.ScanUrl(textBox2.Text, 0);
-
+                var report = await urlAnalysis.ScanUrl(textBox2.Text, scanType);
+                richTextBox2.Text = "Scan Type: " + (scanType == 0 ? "Url" : "Analysis")+ " (0 - Recommended)";
+                richTextBox2.Text += "\n_________________________\n";
 
                 richTextBox2.Text += "URL: " + report.Url + "\n";
+                richTextBox2.Text += "Title: " + report.Title + "\n";
                 richTextBox2.Text += "Permalink: " + report.Permalink + "\n";
                 richTextBox2.Text += "Resource: " + report.Resource + "\n";
                 richTextBox2.Text += "Response Code: " + report.ResponseCode + "\n";
                 richTextBox2.Text += "Scan Date: " + report.Date + "\n";
                 richTextBox2.Text += "Scan ID: " + report.ScanId + "\n";
+                richTextBox2.Text += "Reputation: " + report.Reputation + "\n";
+                richTextBox2.Text += "TLD: " + report.Tld + "\n";
+                richTextBox2.Text += "Times Submitted: " + report.TimesSubmitted + "\n";
+                richTextBox2.Text += "Last Submission Date: " + report.LastSubmissionDate + "\n";
+                richTextBox2.Text += "Last Analysis Date: " + report.LastAnalysisDate + "\n";
+                richTextBox2.Text += "Last Modification Date: " + report.LastModificationDate + "\n";
+                richTextBox2.Text += "Date: " + report.Date + "\n";
+
 
                 richTextBox2.Text += "\n_______________\nStatistical analysis:\n";
                 richTextBox2.Text += "Harmless: " + report.AnalysisStatis.Harmless + "\n";
@@ -191,6 +202,24 @@ namespace VirusTotal_Scanner
                 {
                     richTextBox2.Text += redir + ", ";
                 }
+
+                richTextBox2.Text += "\n___________________\nHTTP Response Headers: \n";
+                richTextBox2.Text += "Content Type: " + report.HttpResponseHeaders.ContentType + "\n";
+                richTextBox2.Text += "Content Security Policy Report Only: " + report.HttpResponseHeaders.ContentSecurityPolicyReportOnly + "\n";
+                richTextBox2.Text += "Accept CH: " + report.HttpResponseHeaders.AcceptCH + "\n";
+                richTextBox2.Text += "Permissions Policy: " + report.HttpResponseHeaders.PermissionsPolicy + "\n";
+                richTextBox2.Text += "P3P: " + report.HttpResponseHeaders.P3P + "\n";
+                richTextBox2.Text += "Content Encoding: " + report.HttpResponseHeaders.ContentEncoding + "\n";
+                richTextBox2.Text += "Date: " + report.HttpResponseHeaders.Date + "\n";
+                richTextBox2.Text += "Server: " + report.HttpResponseHeaders.Server + "\n";
+                richTextBox2.Text += "Content Length: " + report.HttpResponseHeaders.ContentLength + "\n";
+                richTextBox2.Text += "XXSS Protection: " + report.HttpResponseHeaders.XXSSProtection + "\n";
+                richTextBox2.Text += "XFrame Options: " + report.HttpResponseHeaders.XFrameOptions + "\n";
+                richTextBox2.Text += "Cache Control: " + report.HttpResponseHeaders.CacheControl + "\n";
+                richTextBox2.Text += "Set Cookie: " + report.HttpResponseHeaders.SetCookie + "\n";
+                richTextBox2.Text += "Alt Svc: " + report.HttpResponseHeaders.AltSvc + "\n";
+                richTextBox2.
+                    Text += "\n___________________\n";
 
                 richTextBox2.Text += "\nEngine Results: \n";
 
@@ -242,6 +271,89 @@ namespace VirusTotal_Scanner
 
                 }
             }
+        }
+
+        private async void button5_MouseClick(object sender, MouseEventArgs e)
+        {
+            if(e.Button== MouseButtons.Left && isApiKeySet)
+            {
+                DomainAnalysis domainAnalysis = new DomainAnalysis(ApiKey);
+
+                var domainResult = await domainAnalysis.GetDomainReport(textBox4.Text);
+
+                richTextBox4.Text = "Domain ID: " + domainResult.DomainId + "\n";
+                richTextBox4.Text += "Reputation: " + domainResult.Reputation + "\n";
+
+                richTextBox4.Text += "Dns Records Date: " + domainResult.DnsRecordsDate + "\n";
+                richTextBox4.Text += "Tld: " + domainResult.Tld + "\n";
+                richTextBox4.Text += "Jarm: " + domainResult.Jarm + "\n";
+                richTextBox4.Text += "Last Analysis Date: " + domainResult.LastAnalysisDate + "\n";
+                richTextBox4.Text += "Https Certificate Date: " + domainResult.HttpsCertificateDate + "\n";
+                richTextBox4.Text += "Last Modification Date: " + domainResult.LastModificationDate + "\n";
+                richTextBox4.Text += "Analysis Date: " + domainResult.AnalysisDate + "\n";
+                
+                
+                richTextBox4.Text += "_____________________\n";
+
+                richTextBox4.Text += "Categories: \n";
+                foreach (var category in domainResult.Categories)
+                {
+                    richTextBox4.Text += "----------------\n";
+                    richTextBox4.Text += "Category Name: " + category.CategoryName + "\n";
+                    richTextBox4.Text += "Description: " + category.Description + "\n";
+                }
+
+                richTextBox4.Text += "Tags: \n";
+                foreach (var tag in domainResult.Tags)
+                {
+                    richTextBox4.Text += tag + ", ";
+                }
+
+                richTextBox4.Text += "\n_____________________\nStatistical analysis: \nHarmless: " + domainResult.AnalysisStats.Harmless +
+                    "\nMalicious: " + domainResult.AnalysisStats.Malicious + "\nSuspicious: " + domainResult.AnalysisStats.Suspicious + "\n" +
+                    "Undetected: " + domainResult.AnalysisStats.Undetected +
+                    "\nConfirmed TimeOut: " + domainResult.AnalysisStats.TimeOut;
+
+                richTextBox4.Text += "\n_____________________\nEngine Results:\n";
+
+                foreach (var engineRe in domainResult.EnginerResults)
+                {
+                    richTextBox4.Text += "----------------------------------------\n";
+                    richTextBox4.Text += "Engine Name: " + engineRe.EngineName + "\n";
+                    richTextBox4.Text += "Category: " + engineRe.Category + "\n";
+                    richTextBox4.Text += "Result: " + engineRe.Result + "\n";
+                    richTextBox4.Text += "Method: " + engineRe.Method + "\n";
+                }
+
+                richTextBox4.Text += "\n_____________________\nDns Records:\n";
+
+                foreach (var dnsRecord in domainResult.DnsRecords)
+                {
+                    richTextBox4.Text += "----------------------------------------\n";
+                    richTextBox4.Text += "Type: " + dnsRecord.Type + "\n";
+                    richTextBox4.Text += "Value: " + dnsRecord.Value + "\n";
+                    richTextBox4.Text += "Ttl: " + dnsRecord.Ttl + "\n";
+                    richTextBox4.Text += "Priority: " + dnsRecord.Priority + "\n";
+                    richTextBox4.Text += "Rname: " + dnsRecord.Rname + "\n";
+                    richTextBox4.Text += "Serial: " + dnsRecord.Serial + "\n";
+                    richTextBox4.Text += "Refresh: " + dnsRecord.Refresh + "\n";
+                    richTextBox4.Text += "Retry: " + dnsRecord.Retry + "\n";
+                    richTextBox4.Text += "Expire: " + dnsRecord.Expire + "\n";
+                    richTextBox4.Text += "Minimum: " + dnsRecord.Minimum + "\n";
+                }
+
+                richTextBox4.Text += "\n_____________________\nPopularity Ranks:\n";
+
+                foreach (var popRank in domainResult.PopularityRanks)
+                {
+                    richTextBox4.Text += "----------------------------------------\n";
+                    richTextBox4.Text += "Rank Name: " + popRank.RankName + "\n";
+                    richTextBox4.Text += "Time Stamp: " + popRank.TimeStamp + "\n";
+                    richTextBox4.Text += "Rank: " + popRank.Rank + "\n";
+                }
+
+
+            }    
         }
     }
 }

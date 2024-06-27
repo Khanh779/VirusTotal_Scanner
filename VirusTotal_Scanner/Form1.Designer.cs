@@ -46,10 +46,16 @@
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.button5 = new System.Windows.Forms.Button();
+            this.richTextBox4 = new System.Windows.Forms.RichTextBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
+            this.tabPage4.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -60,6 +66,7 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Location = new System.Drawing.Point(5, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -78,7 +85,7 @@
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(559, 307);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "File Scan";
+            this.tabPage1.Text = "File";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // button2
@@ -99,7 +106,7 @@
             this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.richTextBox1.Location = new System.Drawing.Point(6, 67);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(547, 218);
+            this.richTextBox1.Size = new System.Drawing.Size(547, 214);
             this.richTextBox1.TabIndex = 3;
             this.richTextBox1.Text = "";
             this.richTextBox1.WordWrap = false;
@@ -142,7 +149,7 @@
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(559, 307);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Url Scan";
+            this.tabPage2.Text = "Url";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // button3
@@ -164,7 +171,7 @@
             this.richTextBox2.DetectUrls = false;
             this.richTextBox2.Location = new System.Drawing.Point(9, 66);
             this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.Size = new System.Drawing.Size(544, 223);
+            this.richTextBox2.Size = new System.Drawing.Size(544, 219);
             this.richTextBox2.TabIndex = 8;
             this.richTextBox2.Text = "";
             this.richTextBox2.WordWrap = false;
@@ -197,7 +204,7 @@
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage3.Size = new System.Drawing.Size(559, 307);
             this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "IP Address Scan";
+            this.tabPage3.Text = "IP Address";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // button4
@@ -219,7 +226,7 @@
             this.richTextBox3.DetectUrls = false;
             this.richTextBox3.Location = new System.Drawing.Point(9, 66);
             this.richTextBox3.Name = "richTextBox3";
-            this.richTextBox3.Size = new System.Drawing.Size(544, 223);
+            this.richTextBox3.Size = new System.Drawing.Size(544, 219);
             this.richTextBox3.TabIndex = 12;
             this.richTextBox3.Text = "";
             this.richTextBox3.WordWrap = false;
@@ -245,6 +252,61 @@
             // 
             this.openFileDialog1.Filter = "All File |*.*";
             // 
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.button5);
+            this.tabPage4.Controls.Add(this.richTextBox4);
+            this.tabPage4.Controls.Add(this.textBox4);
+            this.tabPage4.Controls.Add(this.label4);
+            this.tabPage4.Location = new System.Drawing.Point(4, 26);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(559, 307);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "Domain";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(326, 37);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(77, 25);
+            this.button5.TabIndex = 17;
+            this.button5.Text = "Scan";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.MouseClick += new System.Windows.Forms.MouseEventHandler(this.button5_MouseClick);
+            // 
+            // richTextBox4
+            // 
+            this.richTextBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.richTextBox4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.richTextBox4.DetectUrls = false;
+            this.richTextBox4.Location = new System.Drawing.Point(9, 70);
+            this.richTextBox4.Name = "richTextBox4";
+            this.richTextBox4.Size = new System.Drawing.Size(544, 219);
+            this.richTextBox4.TabIndex = 16;
+            this.richTextBox4.Text = "";
+            this.richTextBox4.WordWrap = false;
+            // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(9, 38);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(311, 25);
+            this.textBox4.TabIndex = 15;
+            this.textBox4.Text = "bkav.com.vn";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(6, 18);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(56, 17);
+            this.label4.TabIndex = 14;
+            this.label4.Text = "Domain:";
+            // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -262,6 +324,8 @@
             this.tabPage2.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
+            this.tabPage4.ResumeLayout(false);
+            this.tabPage4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -286,6 +350,11 @@
         private System.Windows.Forms.RichTextBox richTextBox3;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.RichTextBox richTextBox4;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.Label label4;
     }
 }
 

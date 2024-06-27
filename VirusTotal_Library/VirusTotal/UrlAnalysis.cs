@@ -1,7 +1,10 @@
 ﻿using Newtonsoft.Json.Linq;
+using System.CodeDom;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using VirusTotal_Library.Structs;
 
 namespace VirusTotal_Library.VirusTotal
@@ -30,11 +33,12 @@ namespace VirusTotal_Library.VirusTotal
             JObject scanData = JObject.Parse(scanDataString);
 
             var getDataAttributes = scanData["data"]["attributes"];
+            var getLast_Http_Response_Headers = getDataAttributes["last_http_response_headers"];
 
             var getReputation = getDataAttributes["reputation"];
             result.Reputation = getDataAttributes["reputation"] != null ? (int)getReputation : 0;
 
-            result.Url = (string)getDataAttributes["url"];
+            result.Url = (scanType == 0 ? (string)getDataAttributes["url"] : url);
             //result.Permalink = (string)scanData["data"]["attributes"]["link"];
             result.Resource = scanId;
             result.ScanId = scanId;
@@ -43,6 +47,7 @@ namespace VirusTotal_Library.VirusTotal
             result.TimesSubmitted = timeSu != null ? (int)timeSu : 0;
             var threNames = scanData["data"]["attributes"]["threat_names"];
             result.ThreatNames = threNames != null ? threNames.ToObject<string[]>() : new string[] { };
+            result.Tld = (string)getDataAttributes["tld"];
 
             result.Title = (string)scanData["data"]["attributes"]["title"] ?? "";
 
@@ -54,14 +59,32 @@ namespace VirusTotal_Library.VirusTotal
             var lastModDate = scanData["data"]["attributes"]["last_modification_date"];
             result.LastModificationDate = ConvertTimeStampsToDateTime(lastModDate != null ? (long)lastModDate : 0);
 
-            if (scanData["data"]["attributes"]["date"] != null)
+            result.Date = getLast_Http_Response_Headers["date"] != null ?
+                    ConvertDateStringToDateTime((string)getLast_Http_Response_Headers?["date"]) :
+                    ConvertTimeStampsToDateTime((long)getDataAttributes["date"]);
+
+
+            var HttpResponseHeaders = new HttpResponseHeaders();
+            if (getLast_Http_Response_Headers != null)
             {
-                result.Date = ConvertTimeStampsToDateTime((long)scanData["data"]["attributes"]["date"]);
+                HttpResponseHeaders.ContentType = (string)getLast_Http_Response_Headers["content-type"];
+                HttpResponseHeaders.ContentSecurityPolicyReportOnly = (string)getLast_Http_Response_Headers["content-security-policy-report-only"];
+                HttpResponseHeaders.AcceptCH = (string)getLast_Http_Response_Headers["accept-ch"];
+                HttpResponseHeaders.PermissionsPolicy = (string)getLast_Http_Response_Headers["permissions-policy"];
+                HttpResponseHeaders.P3P = (string)getLast_Http_Response_Headers["p3p"];
+                HttpResponseHeaders.ContentEncoding = (string)getLast_Http_Response_Headers["content-encoding"];
+                HttpResponseHeaders.Date = ConvertDateStringToDateTime((string)getLast_Http_Response_Headers["date"]);
+                HttpResponseHeaders.Server = (string)getLast_Http_Response_Headers["server"];
+                HttpResponseHeaders.ContentLength = (int)getLast_Http_Response_Headers["content-length"];
+                HttpResponseHeaders.XXSSProtection = (string)getLast_Http_Response_Headers["x-xss-protection"];
+                HttpResponseHeaders.XFrameOptions = (string)getLast_Http_Response_Headers["x-frame-options"];
+                HttpResponseHeaders.CacheControl = (string)getLast_Http_Response_Headers["cache-control"];
+                HttpResponseHeaders.SetCookie = (string)getLast_Http_Response_Headers["set-cookie"];
+                HttpResponseHeaders.AltSvc = (string)getLast_Http_Response_Headers["alt-svc"];
+
             }
-            else
-            {
-                result.Date = ConvertDateStringToDateTime((string)scanData["data"]["attributes"]["last_http_response_headers"]["date"]);
-            }
+            result.HttpResponseHeaders = HttpResponseHeaders;
+
 
 
             var analysis = new AnalysisStatis();
@@ -74,14 +97,14 @@ namespace VirusTotal_Library.VirusTotal
             analysis.Confirmed_TimeOut = (int)getStat["timeout"];
             result.AnalysisStatis = analysis;
 
-            var categories = new List<URLCategorie>();
+            var categories = new List<Category>();
             if (getDataAttributes["categories"] != null)
             {
                 var getCate = ((JObject)(getDataAttributes["categories"])).Properties();
                 int indexCat = 0;
                 foreach (var cate in getCate)
                 {
-                    var category = new URLCategorie();
+                    var category = new Category();
                     category.Index = indexCat;
                     category.CategoryName = cate.Name;
                     category.Description = (string)cate.Value;

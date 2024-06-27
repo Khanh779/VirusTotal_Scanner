@@ -20,7 +20,7 @@ namespace VirusTotal_Library.Structs
         public string[] RedirectionChain { get; set; }
         public string[] Tags { get; set; }
 
-        public List<URLCategorie> Categories { get; set; }
+        public List<Category> Categories { get; set; }
 
         public AnalysisStatis AnalysisStatis { get; set; }
 
@@ -31,11 +31,35 @@ namespace VirusTotal_Library.Structs
         public DateTime LastAnalysisDate { get; set; }
 
         public int TimesSubmitted { get; set; }
+        public string Tld { get; set; }
 
         public string[] ThreatNames { get; set; }
+
+        public HttpResponseHeaders HttpResponseHeaders { get; set; }
+
+
     }
 
-    public struct URLCategorie
+    public struct HttpResponseHeaders
+    {
+        public string ContentType { get; set; }
+        public string ContentSecurityPolicyReportOnly { get; set; }
+        public string AcceptCH { get; set; }
+        public string PermissionsPolicy { get; set; }
+        public string P3P { get; set; }
+        public string ContentEncoding { get; set; }
+        public DateTime Date { get; set; }
+        public string Server { get; set; }
+        public int ContentLength { get; set; }
+        public string XXSSProtection { get; set; }
+        public string XFrameOptions { get; set; }
+    
+        public string CacheControl { get; set; }
+        public string SetCookie { get; set; }
+        public string AltSvc { get; set; }
+    }
+
+    public struct Category
     {
         public int Index { get; set; }
         public string CategoryName { get; set; }

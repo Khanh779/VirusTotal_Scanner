@@ -37,8 +37,9 @@ namespace VirusTotal_Library.VirusTotal
 
         public DateTime ConvertDateStringToDateTime(string dateTimeString)
         {
-            DateTimeOffset dateTime = DateTimeOffset.ParseExact(dateTimeString, "ddd, dd MMM yyyy HH:mm:ss 'GMT'", System.Globalization.CultureInfo.InvariantCulture);
-            return dateTime.DateTime;
+            //DateTimeOffset dateTime = DateTimeOffset.ParseExact(dateTimeString, "ddd, dd MMM yyyy HH:mm:ss 'GMT'", System.Globalization.CultureInfo.InvariantCulture);
+            DateTime dateTime1= DateTime.Parse(dateTimeString);
+            return dateTime1;
         }
 
 

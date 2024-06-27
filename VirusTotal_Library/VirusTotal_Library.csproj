@@ -53,10 +53,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Structs\DomainScanResult.cs" />
     <Compile Include="Structs\FileScanResult.cs" />
     <Compile Include="Structs\IpAddressResult.cs" />
     <Compile Include="Structs\UrlScanResult.cs" />
     <Compile Include="Structs\EnginerResult.cs" />
+    <Compile Include="VirusTotal\DomainAnalysis.cs" />
     <Compile Include="VirusTotal\FileAnalysis.cs" />
     <Compile Include="VirusTotal\IpAnalysis.cs" />
     <Compile Include="VirusTotal\UrlAnalysis.cs" />

@@ -7,6 +7,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirusTotal_Library", "Virus
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirusTotal_Scanner", "VirusTotal_Scanner\VirusTotal_Scanner.csproj", "{AF87A7E1-2691-46D3-A1A5-E159408E0BEB}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Screenshot", "Screenshot", "{8A9AA38D-13D5-4BC2-9F3D-29B3FD785DD9}"
+	ProjectSection(SolutionItems) = preProject
+		C:\Users\quock\Downloads\Recod.gif = C:\Users\quock\Downloads\Recod.gif
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
