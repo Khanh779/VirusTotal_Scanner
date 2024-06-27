@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34902.65
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirusTotal_Library", "VirusTotal_Library\VirusTotal_Library.csproj", "{0770E8F1-A072-4A87-81F0-B71B725914BD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirusTotal_Scanner", "VirusTotal_Scanner\VirusTotal_Scanner.csproj", "{AF87A7E1-2691-46D3-A1A5-E159408E0BEB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0770E8F1-A072-4A87-81F0-B71B725914BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0770E8F1-A072-4A87-81F0-B71B725914BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0770E8F1-A072-4A87-81F0-B71B725914BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0770E8F1-A072-4A87-81F0-B71B725914BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF87A7E1-2691-46D3-A1A5-E159408E0BEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF87A7E1-2691-46D3-A1A5-E159408E0BEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF87A7E1-2691-46D3-A1A5-E159408E0BEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF87A7E1-2691-46D3-A1A5-E159408E0BEB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C07DCCDE-C3CE-4D19-9BB0-8F5CB642BE5C}
+	EndGlobalSection
+EndGlobal

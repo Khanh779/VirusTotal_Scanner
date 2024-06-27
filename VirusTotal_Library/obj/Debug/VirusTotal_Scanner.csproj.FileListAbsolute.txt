@@ -1,0 +1,12 @@
+D:\Data\Tailieu\Projects\C#\VirusTotal_Scanner\VirusTotal_Scanner\bin\Debug\VirusTotal_Scanner.exe.config
+D:\Data\Tailieu\Projects\C#\VirusTotal_Scanner\VirusTotal_Scanner\bin\Debug\VirusTotal_Scanner.exe
+D:\Data\Tailieu\Projects\C#\VirusTotal_Scanner\VirusTotal_Scanner\bin\Debug\VirusTotal_Scanner.pdb
+D:\Data\Tailieu\Projects\C#\VirusTotal_Scanner\VirusTotal_Scanner\obj\Debug\VirusTotal_Scanner.csproj.AssemblyReference.cache
+D:\Data\Tailieu\Projects\C#\VirusTotal_Scanner\VirusTotal_Scanner\obj\Debug\VirusTotal_Scanner.Properties.Resources.resources
+D:\Data\Tailieu\Projects\C#\VirusTotal_Scanner\VirusTotal_Scanner\obj\Debug\VirusTotal_Scanner.csproj.GenerateResource.cache
+D:\Data\Tailieu\Projects\C#\VirusTotal_Scanner\VirusTotal_Scanner\obj\Debug\VirusTotal_Scanner.csproj.CoreCompileInputs.cache
+D:\Data\Tailieu\Projects\C#\VirusTotal_Scanner\VirusTotal_Scanner\obj\Debug\VirusTotal_Scanner.exe
+D:\Data\Tailieu\Projects\C#\VirusTotal_Scanner\VirusTotal_Scanner\obj\Debug\VirusTotal_Scanner.pdb
+D:\Data\Tailieu\Projects\C#\VirusTotal_Scanner\VirusTotal_Scanner\bin\Debug\Newtonsoft.Json.dll
+D:\Data\Tailieu\Projects\C#\VirusTotal_Scanner\VirusTotal_Scanner\bin\Debug\Newtonsoft.Json.xml
+D:\Data\Tailieu\Projects\C#\VirusTotal_Scanner\VirusTotal_Scanner\obj\Debug\VirusTot.84F7D22C.Up2Date

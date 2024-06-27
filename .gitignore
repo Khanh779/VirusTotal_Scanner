@@ -1,0 +1,7 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/VirusTotal_Scanner
+/VirusTotal_Library/.vs
+/VirusTotal_Scanner/.vs
