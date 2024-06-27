@@ -1,5 +1,7 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using VirusTotal_Library.Structs;
 using VirusTotal_Library.VirusTotal;
@@ -21,24 +23,34 @@ namespace VirusTotal_Scanner
 
         void GetApiKey_FromFile(string filePath)
         {
-            if(File.Exists(filePath))
+            if (!File.Exists(filePath))
+            {
+                //File.Create(filePath);
+                File.AppendAllLines(filePath, new string[] { "ApiKey=" + ApiKey });
+                MessageBox.Show("Please enter your API Key in the VirusTotal_Cfg.ini file in the application directory.", Application.ProductName,
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+         
+
+            if (File.Exists(filePath))
             {
                 string[] lines = System.IO.File.ReadAllLines(filePath);
                 foreach (string line in lines)
                 {
-                    if (line.Split('=')[0] == "ApiKey")
+                    if (line.Split('=')[0].Contains("ApiKey"))
                     {
-                        ApiKey = line.Split('=')[1];
-                        isApiKeySet = true;
+                        if (line.Split('=')[1] != ApiKey)
+                        {
+                            ApiKey = line.Split('=')[1];
+                            isApiKeySet = true;
+                        }
+
                     }
+                  
                 }
             }
-            else
-            {
-                File.Create(filePath);
-                File.AppendText(filePath).Write("ApiKey=<Enter Your Api Key>");
-                MessageBox.Show("Please enter your API Key in the VirusTotal_Cfg.ini file in the application directory.");
-            }
+
         }
 
 
@@ -59,18 +71,18 @@ namespace VirusTotal_Scanner
 
         private void button1_MouseClick(object sender, MouseEventArgs e)
         {
-            if(e.Button == MouseButtons.Left)
+            if (e.Button == MouseButtons.Left)
             {
                 if (openFileDialog1.ShowDialog() == DialogResult.OK)
                 {
                     textBox1.Text = openFileDialog1.FileName;
                 }
-            }    
+            }
         }
 
         private async void button2_MouseClick(object sender, MouseEventArgs e)
         {
-            if(e.Button == MouseButtons.Left && isApiKeySet==true)
+            if (e.Button == MouseButtons.Left && isApiKeySet == true)
             {
                 VirusTotal_Library.VirusTotal.FileAnalysis fileAnalysis = new VirusTotal_Library.VirusTotal.FileAnalysis(ApiKey);
 
@@ -123,12 +135,12 @@ namespace VirusTotal_Scanner
                     richTextBox1.Text += "Result: " + engineRe.Result + "\n";
 
                 }
-            }    
+            }
         }
 
         private async void button3_MouseClick(object sender, MouseEventArgs e)
         {
-            if(e.Button == MouseButtons.Left && isApiKeySet)
+            if (e.Button == MouseButtons.Left && isApiKeySet)
             {
                 VirusTotal_Library.VirusTotal.UrlAnalysis urlAnalysis = new VirusTotal_Library.VirusTotal.UrlAnalysis(ApiKey);
 
@@ -196,7 +208,7 @@ namespace VirusTotal_Scanner
 
         private async void button4_MouseClick(object sender, MouseEventArgs e)
         {
-            if(e.Button == MouseButtons.Left && isApiKeySet==true)
+            if (e.Button == MouseButtons.Left && isApiKeySet == true)
             {
                 IpAnalysis ipAnalysis = new IpAnalysis(ApiKey);
 
