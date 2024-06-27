@@ -9,7 +9,7 @@ This project is built on .NET Framework 4.7.2 and provides functionality to scan
 - **File Scanning**: Analyze files to detect potential security threats.
 - **URL Scanning**: Scan URLs to identify malicious or suspicious content.
 - **IP Address Scanning**: Check IP addresses to detect potential security threats.
-- - **Domain Scanning**: Evaluate domains to detect DNS records, security parameters, and file analysis.
+- **Domain Scanning**: Evaluate domains to detect DNS records, security parameters, and file analysis.
 
 
 ### Setting Up API Key
