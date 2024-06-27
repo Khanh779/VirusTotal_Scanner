@@ -5,3 +5,5 @@
 /.vs/VirusTotal_Scanner
 /VirusTotal_Library/.vs
 /VirusTotal_Scanner/.vs
+/VirusTotal_Scanner/bin/Debug/VirusTotal_Cfg.ini
+/VirusTotal_Scanner/bin/Debug/VirusTotal_Cfg.ini
